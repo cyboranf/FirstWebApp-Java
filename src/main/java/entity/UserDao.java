@@ -24,7 +24,7 @@ public class UserDao {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
-    public User create(User user) {
+    public static User create(User user) {
         try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement statement =
                     conn.prepareStatement(CREATE_USER_QUERY, Statement.RETURN_GENERATED_KEYS);
