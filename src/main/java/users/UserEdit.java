@@ -1,68 +1,63 @@
 package users;
 
 import entity.User;
-import entity.UserDao;
+import entity.UserDAO;
+import utils.UserFormValidator;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @WebServlet(name = "UserEdit", value = "/user/edit")
 public class UserEdit extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
-        entity.User user;
-        if (id == null) {
-            user = new entity.User(-1, "", "", "");
-        } else {
-            UserDao userDao = new UserDao();
-            user = userDao.read(Integer.parseInt(id));
+        UserDAO userDAO = new UserDAO();
+        try {
+            int userId = Integer.parseInt(request.getParameter("id"));
+            User user = userDAO.read(userId);
+            request.getSession().setAttribute("user", user);
+            request.setAttribute("usernameField", user.getUserName());
+            request.setAttribute("emailField", user.getEmail());
+        } catch (NumberFormatException | NullPointerException e) {
+            response.sendError(404);
         }
-        request.setAttribute("user", user);
-        getServletContext().getRequestDispatcher("/users/edit.jsp").forward(request, response);
+        if (!response.isCommitted()) {
+            getServletContext().getRequestDispatcher("/WEB-INF/users/edit.jsp")
+                    .forward(request, response);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<String> errorMessages = new ArrayList<>();
-        String userName = request.getParameter("userName");
+        String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        //sprawdzenie danych wejściowych
-        if (userName == "") {
-            errorMessages.add("Nazwa użytkownika nie może być pusta.");
+        if (UserFormValidator.validateForm(request)) {
+            User editUser = new User();
+            HttpSession session = request.getSession();
+            User oldUser = (User) session.getAttribute("user");
+            editUser.setId(oldUser.getId());
+            editUser.setUserName(username);
+            editUser.setEmail(email);
+            editUser.setPassword(password);
+            UserDAO userDAO = new UserDAO();
+            if (email.equals(oldUser.getEmail()) || !userDAO.existsByEmail(editUser)) {
+                userDAO.update(editUser);
+                response.sendRedirect("/user/list");
+            } else {
+                request.setAttribute("emailError", "Ten email jest już zajęty.");
+            }
         }
-        if (!email.matches(entity.User.emailRegex)) {
-            errorMessages.add("Niepoprawny adres email.");
+        if (!response.isCommitted()) {
+            getServletContext().getRequestDispatcher("/WEB-INF/users/edit.jsp")
+                    .forward(request, response);
         }
-        if (password.length() < 8) {
-            errorMessages.add("Hasło zbyt krótkie.");
-        }
-        int id = -2;
-        try {
-            id = Integer.parseInt(request.getParameter("id"));
-        } catch (NumberFormatException e) {
-            errorMessages.add("Niepoprawny numer id");
-        }
-        User user = new User(id, userName, email, password);
-        if (errorMessages.size() > 0) {
-            request.setAttribute("messages", errorMessages);
-            request.setAttribute("user", user);
-            getServletContext().getRequestDispatcher("/users/edit.jsp").forward(request, response);
-            return;
-        }
-        UserDao userDao = new UserDao();
-        if (id == -1) {
-            userDao.create(user);
-        } else {
-            userDao.update(user);
-        }
-        response.sendRedirect("/user/list");
     }
 }
