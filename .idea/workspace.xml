@@ -9,21 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c538bb6-4a9c-4c9d-8e01-19ed801b5841" name="Changes" comment="Sql">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/404.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/users/add.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/users/details.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/users/edit.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/users/list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/users/delete.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/users/edit.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/users/list.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/users/show.jsp" beforeDir="false" />
-    </list>
+    <list default="true" id="1c538bb6-4a9c-4c9d-8e01-19ed801b5841" name="Changes" comment="Sql" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -180,7 +166,7 @@
       <workItem from="1653994777555" duration="2179000" />
       <workItem from="1654932184610" duration="87000" />
       <workItem from="1655040245656" duration="4839000" />
-      <workItem from="1656163743636" duration="1867000" />
+      <workItem from="1656163743636" duration="2186000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1653933440394</created>
@@ -232,6 +218,7 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="DbUtil" />
     <MESSAGE value="Sql" />
+    <MESSAGE value="fixed webapp, added WEB-INF" />
     <option name="LAST_COMMIT_MESSAGE" value="Sql" />
   </component>
 </project>
