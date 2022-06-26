@@ -25,11 +25,7 @@
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema">
-            <name qname="Workshop_2" />
-            <name qname="workshop_2" />
-            <name qname="workshop_2.1" />
-          </node>
+          <node kind="schema" negative="1" />
         </introspection-scope>
       </schema-mapping>
     </data-source>

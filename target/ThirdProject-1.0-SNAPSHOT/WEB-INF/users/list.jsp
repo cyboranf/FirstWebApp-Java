@@ -69,7 +69,7 @@
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#deleteModal" id="userId" data-id="${user.id}">Usuń</a>
                                 <a href="<c:url value="/user/edit?id=${user.id}"/>">Edit</a>
-                                <a href="<c:url value="/user/show?id=${user.id}"/>">Pokaż</a>
+                                <a href="<c:url value="/user/shows?id=${user.id}"/>">Pokaż</a>
                             </td>
                         </tr>
                     </c:forEach>

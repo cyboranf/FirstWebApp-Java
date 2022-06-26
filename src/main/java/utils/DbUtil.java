@@ -19,7 +19,7 @@ public class DbUtil {
             try {
                 Context initContext = new InitialContext();
                 Context envContext = (Context) initContext.lookup("java:/comp/env");
-                dataSource = (DataSource) envContext.lookup("jdbc/Workshop_2");
+                dataSource = (DataSource) envContext.lookup("jdbc/users");
             } catch (NamingException e) {
                 e.printStackTrace();
             }

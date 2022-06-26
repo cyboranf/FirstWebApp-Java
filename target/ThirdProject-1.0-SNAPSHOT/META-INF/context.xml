@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-    <Resource name="jdbc/Workshop_2"
+    <Resource name="jdbc/users"
               auth="Container"
               type="javax.sql.DataSource"
               username="root"
               password="coderslab"
               driverClassName="com.mysql.jdbc.Driver"
               connectionProperties="useUnicode=yes;characterEncoding=utf8;serverTimezone=UTC"
-              url="jdbc:mysql://localhost:3306/workshop3"
+              url="jdbc:mysql://localhost:3306/workshop2"
               maxTotal="100"
               maxIdle="30"
               maxWaitMillis="10000" />
