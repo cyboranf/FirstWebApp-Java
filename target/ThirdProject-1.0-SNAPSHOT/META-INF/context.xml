@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-    <Resource name="jdbc/users"
+    <Resource name="jdbc/Workshop_2"
               auth="Container"
               type="javax.sql.DataSource"
               username="root"
