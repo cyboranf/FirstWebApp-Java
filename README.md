@@ -1,9 +1,9 @@
-# Third-Project
-This project uses:
-MVC,
-Servlets,
-OOP,
-MySQL,
-DAO classes,
-Maven
-IntelliJ Idea
+# Web App in Java
+**This project uses:**
+* MVC
+* Servlets
+* OOP
+* MySQL
+* DAO classes
+* Maven
+
